@@ -1,2 +1,1 @@
-# AXM_Project
-Thsi is AXM portfolio
+# AXM_Project | AXM portfolio
