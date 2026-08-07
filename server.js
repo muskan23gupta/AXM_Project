@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 
 // Route for sending email
 app.post("/send", async (req, res) => {
-  const { name, email, phone, message } = req.body;
+  const { name, email, phone, alternate_phone, message } = req.body;
 
   try {
     let transporter = nodemailer.createTransport({
