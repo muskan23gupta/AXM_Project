@@ -6,7 +6,14 @@ const cors = require("cors");
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors());
+//app.use(cors());
+
+app.use(cors({
+  origin: [
+    "https://axmbearing.in",
+    "https://www.axmbearing.in"
+  ]
+}));
 
 // Route for sending email
 app.post("/send", async (req, res) => {
