@@ -15,6 +15,10 @@ app.use(cors({
   ]
 }));
 
+app.get("/", (req, res) => {
+  res.send("AXM backend is running");
+});
+
 // Route for sending email
 app.post("/send", async (req, res) => {
   const { name, email, phone, message } = req.body;
@@ -28,7 +32,7 @@ app.post("/send", async (req, res) => {
       }
     });
 
-    let mailOptions = {
+    const mailOptions = {
       from: process.env.GMAIL_USER,
       replyTo: email,
       to: "axiombearing@gmail.com",
@@ -37,6 +41,7 @@ app.post("/send", async (req, res) => {
         Name: ${name}
         Email: ${email}
         Phone: ${phone}
+        Alternate Phone: ${alternate_phone || "Not provided"}
         Message: ${message}
       `
     };
@@ -51,6 +56,6 @@ app.post("/send", async (req, res) => {
 });
 
 const PORT = process.env.PORT || 5500;
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
